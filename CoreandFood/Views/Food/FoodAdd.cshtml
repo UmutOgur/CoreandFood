@@ -1,0 +1,31 @@
+﻿@model CoreandFood.Data.Models.Urunekle
+@{
+    ViewData["Title"] = "FoodAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Food Add Page</h2>
+<br />
+<form class="form-group" action="FoodAdd" asp-controller="Food" method="post" enctype="multipart/form-data">
+    <b style="margin-left:20px;">Food Name</b>
+    @Html.TextBoxFor(x => x.FoodName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.FoodName, "", new { @style = "color:red" })
+    <br />
+    <b style="margin-left:20px;">Stock</b>
+    @Html.TextBoxFor(x => x.stock, new { @class = "form-control" })
+    <br />
+    <b style="margin-left:20px;">Price</b>
+    @Html.TextBoxFor(x => x.Price, new { @class = "form-control" })
+    <br />
+    <b style="margin-left:20px;">Chosee Image</b>
+    <input type="file" name="ImageUrl" />
+    <br />
+    <b style="margin-left:20px;">Category</b>
+    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.v1, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.CategoryId, "", new { @style = "color:red" })
+    <br />
+    <b style="margin-left:20px;">Description</b>
+    @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-primary">ADD FOOD</button>
+</form>

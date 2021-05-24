@@ -1,0 +1,40 @@
+﻿@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@model IPagedList<CoreandFood.Data.Models.Food>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Food List</h2>
+<br />
+<table class="table w3-table-all w3-hoverable">
+    <tr>
+        <th style="background-color:aqua">ID</th>
+        <th style="background-color:aqua">Food Name</th>
+        <th style="background-color:aqua">Price</th>
+        <th style="background-color:aqua">Stock</th>
+        <th style="background-color:aqua">Category Name</th>
+        <th style="background-color:aqua">Delete</th>
+        <th style="background-color:aqua">Update</th>
+        <th style="background-color:aqua">Details</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <th>@item.FoodID</th>
+            <td>@item.FoodName</td>
+            <td>@item.Price</td>
+            <td>@item.stock</td>
+            <td>@item.Category.CategoryName</td>
+            <td><a href="/Food/DeleteFood/@item.FoodID" class="btn btn-danger">Delete</a></td>
+            <td><a href="/Food/FoodGet/@item.FoodID" class="btn btn-success">Update</a></td>
+            <td><a href="#" class="btn btn-info">Details</a></td>
+        </tr>
+    }
+</table>
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page })) @*Page list kısmında sayfalama olacak yeri temsil eder.*@
+<br />
+<a href="/Food/FoodAdd/" class="btn btn-primary">New Food</a>
+
