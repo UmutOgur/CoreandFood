@@ -1,4 +1,4 @@
-# CoreandFood -- Created by .NET MCV CORE TECHNOLOGY
+# CoreandFood -- Created by .NET MVC CORE TECHNOLOGY
 User Authentication.
 Migrations(First Code) create database.
 Generic Repository(Main classes interface library).
